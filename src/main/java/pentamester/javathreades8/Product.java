@@ -8,7 +8,7 @@ package pentamester.javathreades8;
  *
  * @author shwak
  */
-public class Product {
+/*public class Product {
 
     private int element;
 
@@ -21,6 +21,23 @@ public class Product {
     }
 
     public int getElement() {
+        return this.element;
+    }
+}
+ */
+public class Product {
+
+    private int element;
+
+    public Product(int n) {
+        this.element = n;
+    }
+//aggiunta synchronized
+    public synchronized void setElement(int element) {
+        this.element = element;
+    }
+
+    public synchronized int getElement() {
         return this.element;
     }
 }
