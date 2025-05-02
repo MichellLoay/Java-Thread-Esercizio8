@@ -8,6 +8,8 @@ package pentamester.javathreades8;
  *
  * @author shwak
  */
+
+/*
 public class Consumer extends Thread {
 
     private Product prod;
@@ -30,6 +32,30 @@ public class Consumer extends Thread {
             }
         } catch (InterruptedException e) {
             System.out.println(this.getName() + " sono stato interrotto ");
+        }
+    }
+}*/
+public class Consumer extends Thread {
+
+    private Product prod;
+    private int times;
+
+    public Consumer(Product prod, String name, int times) {
+        this.prod = prod;
+        this.setName(name);
+        this.times = times;
+    }
+
+    public void run() {
+        int count = 0;
+        while (count < times) {
+            int value = prod.getElement();
+            count++;
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                interrupt();
+            }
         }
     }
 }

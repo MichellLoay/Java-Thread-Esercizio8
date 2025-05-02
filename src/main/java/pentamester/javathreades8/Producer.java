@@ -7,7 +7,7 @@ package pentamester.javathreades8;
 /**
  *
  * @author shwak
- */
+ *//*
 public class Producer extends Thread {
 
     private Product prod;
@@ -30,6 +30,33 @@ public class Producer extends Thread {
             }
         } catch (InterruptedException e) {
             System.out.println(this.getName() + " sono stato interrotto ");
+        }
+    }
+}
+ */
+
+public class Producer extends Thread {
+
+    private Product prod;
+    private int times;
+
+    public Producer(Product prod, String name, int times) {
+        this.prod = prod;
+        this.setName(name);
+        this.times = times;
+    }
+
+    public void run() {
+        int count = 0;
+        while (count < times) {
+            int value = (int) (Math.random() * 100);
+            prod.setElement(value);
+            count++;
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                interrupt();
+            }
         }
     }
 }
